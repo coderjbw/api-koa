@@ -16,7 +16,9 @@
     "koa": "^2.16.0",
     "koa-bodyparser": "^4.4.1",
     "koa-json": "^2.0.2",
+    "log4js": "^6.9.1",
     "module-alias": "^2.2.3",
-    "nodemon": "^3.1.9"
+    "nodemon": "^3.1.9",
+    "openai": "^4.91.0"
   }
 }

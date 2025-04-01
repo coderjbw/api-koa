@@ -1,3 +1,5 @@
+const logger = require("@/loggerMiddleware");
+
 // 统一的错误处理
 const errorHandler = async (ctx, next) => {
     try {
