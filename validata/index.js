@@ -7,7 +7,7 @@ class Validate {
     };
     // 空值和字符串校验
     async nullCheck(val, tips, par) {
-        await undefinedCheck(val, par);
+        await this.undefinedCheck(val, par);
         if (val.trim === '') {
             throw { msg: tips, code: 422, validate: null };
         }
@@ -17,7 +17,7 @@ class Validate {
     };
     // 校验数组类型
     async arrayCheck(val, tips, par) {
-        await undefinedCheck(val, par);
+        await this.undefinedCheck(val, par);
         if (!Array.isArray(val)) {
             throw { msg: `${par}字段必须是数组类型`, code: 400, validate: null };
         }

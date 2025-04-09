@@ -1,4 +1,6 @@
 const OpenAI = require('openai');
+const tools = require('@/config/tools');
+const Validate = require('@/validata/index');
 const {aliyun} = require('@/config/default');
 
 const openai = new OpenAI(
@@ -9,18 +11,26 @@ const openai = new OpenAI(
 );
 
 class ChatController {
-    async chatMessage() {
-        const {} = ctx.request.body;
+    async chatMessage(ctx) {
+        const {chatMessage} = ctx.request.body;
+        console.log(chatMessage);
+        await Validate.arrayCheck(chatMessage, 'chatMessage字段不能为空', 'chatMessage');
+
+        let messages = [
+            {role: "system", content: aliyun.systemContent},
+            ...chatMessage
+        ];
         const completion = await openai.chat.completions.create({
-            model: "qwen-plus", // 此处以qwen-plus为例，可按需更换模型名称。模型列表：https://help.aliyun.com/zh/model-studio/getting-started/models
-            messages: [
-                {"role": "system", "content": "You are a helpful assistant."},
-                {"role": "user", "content": "你是谁？"}
-            ],
+            model: "qwen-plus", //模型列表
+            messages,
             stream: true,
+            tools
         });
         for await (const chunk of completion) {
-            console.log(JSON.stringify(chunk));
+            const str = JSON.stringify(chunk);
+            const obj = JSON.parse(str);
+            console.log(str);
+            console.log(obj);
         }
     }
 }
