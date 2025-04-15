@@ -74,6 +74,16 @@ class ChatController {
             }
         }
     }
+
+    async uploadFile(ctx) {
+        console.log(ctx.file);
+        console.log(ctx.host);
+        if (ctx.file === undefined) {
+          throw { msg: "请上传正确的图片", code: 422, validate: null };
+        }
+        // 客户端
+        ctx.send(`http://${ctx.host}/${ctx.file.destination}${ctx.file.filename}`);
+    }
 }
 
 module.exports = new ChatController();
