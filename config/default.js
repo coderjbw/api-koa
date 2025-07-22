@@ -12,5 +12,5 @@ module.exports = {
     dbUrl: {
       host: "mongodb://localhost/agent",
     },
-  };
+};
   

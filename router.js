@@ -6,11 +6,16 @@ const uploadFile = require('@/config/uploadFile');
 const user = require('@/controller/user');
 const chat = require('@/controller/chat');
 const callTools = require('@/controller/calltool');
+// 商品
+const goods = require("@/controller/goods");
 
 router.post('/login', user.login);
 router.post('/chatMessage', chat.chatMessage);
 router.post('/uploadFile', uploadFile.single('file'), chat.uploadFile);
 router.post('/getWeather', callTools.queryWeather);
 router.post('/getTrainTickets', callTools.queryTrainTickets);
+router.get('/addGoods', goods.addGoods);
+router.post('/goodsDetail', goods.goodsDetail);
+router.post('/searchGoods', goods.searchGoods);
 
 module.exports = router;
