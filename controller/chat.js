@@ -15,7 +15,8 @@ class ChatController {
         const {chatMessage} = ctx.request.body;
         console.log(chatMessage);
         await Validate.arrayCheck(chatMessage, 'chatMessage字段不能为空', 'chatMessage');
-
+        // 删除数组的最后一项
+        chatMessage.pop();
         let messages = [
             {role: "system", content: aliyun.systemContent},
             ...chatMessage

@@ -1,4 +1,4 @@
-
+const {queryTrainTicketsUrl, appCode, queryWeatherUrl} = require('@/config/default').aliyun;
 
 class CallToolsController {
   // 火车票查询
