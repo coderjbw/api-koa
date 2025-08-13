@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { modelComplaint } = require('@/model/modelComplaint');
+const { modelComplaint } = require('@/model/complaint');
 const Validate = require('@/validata/index');
 
 class ComplaintController {
